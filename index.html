@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Пятнашки</title>
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+
+<!--WebStorm выделяет как предупреждение все ng-элементы.-->
+<!--Для исправления можно добавить "data-" перед каждым. Пример: "data-ng-app"-->
+<body ng-app="Pyatnashki" ng-controller="MainCtrl">
+<div>
+    <div class="container base">
+        <!-- Заголовок -->
+        <div class="text-center">
+            <h1>Пятнашки!</h1>
+            <div id="controlDescription">Управление клавишами <i class="fa fa-arrow-circle-up"></i> <i class="fa fa-arrow-circle-down"></i> <i class="fa fa-arrow-circle-left"></i> <i class="fa fa-arrow-circle-right"></i> на клавиатуре</div>
+        </div>
+        <!-- Контейнер для игрового поля -->
+        <div class="centered">
+            <table class="table-bordered " ng-if="isReady">
+                <tr ng-repeat="row in dataNum">
+                    <td ng-repeat="col in row track by $index">
+                        {{ col }}
+                    </td>
+                </tr>
+            </table>
+            <div id="winTitle"></div>
+        </div>
+        <!-- Выбор размера игрового поля, количества ходов для перемешивания, режим управления + кнопка "Начать игру" -->
+        <div class="text-center" id="newGame">
+            <div class="form-group" >
+                <label for="inputSize"> Введите размер игрового поля (от 3 до 9):</label>
+                <input type="text" id="inputSize" class="form-control input-lg" ng-model="inputSize" maxlength="1"/>
+                <label for="inputMoves"> На сколько ходов запутать исходное положение (от 0 до 999):</label>
+                <input type="text" id="inputMoves" class="form-control input-lg" ng-model="inputMoves" maxlength="3"/>
+                <label>Выберите режим управления:</label>
+                <div class="inverseSwitch centered">
+                    <input type="checkbox" name="inverseSwitch" class="inverseSwitch-checkbox" id="myInverseSwitch" ng-model="inverseSwitch" checked>
+                    <label class="inverseSwitch-label" for="myInverseSwitch">
+                        <span class="inverseSwitch-inner"></span>
+                        <span class="inverseSwitch-switch"></span>
+                    </label>
+                </div>
+            </div>
+        <a class="btn btn-success btn-lg" ng-click="newGame()">Новая игра</a>
+        </div>
+        <!-- Изначально скрытая кнопка "Закончить игру" -->
+        <div class="text-center" id="endGame">
+            <a class="btn btn-danger btn-lg" ng-click="gameOver()">Закончить игру</a>
+        </div>
+    </div>
+    <!-- Модальное окно с сообщением о победе-->
+    <div id="modal">
+        <div class="overlay"></div>
+        <div class="visible">
+            <h2>Ура! Победа!</h2>
+            <div class="content">
+                <div class="text-center" id="winGame">
+                    <a class="btn btn-info btn-lg" ng-click="winGame()">Сыграть снова</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-sanitize.min.js"></script>
+<script src="js/keypress-2.1.5.min.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

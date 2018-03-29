@@ -1,0 +1,123 @@
+body {
+    background-color: lightblue;
+}
+table {
+    margin: 0 auto 20px;
+}
+td {
+    height: 70px;
+    width: 70px;
+    text-align: center;
+    background-color: #fff;
+    font-size: 22px;
+}
+.base {
+    margin-top: 50px;
+    width: 100%;
+}
+.centered {
+    margin: 0 auto;
+}
+#endGame {
+    margin-top: 25px;
+    display: none;
+}
+#winGame {
+    margin-top: 25px;
+}
+#newGame {
+    display: block;
+}
+#controlDescription {
+    margin: 20px;
+    font-size: 22px;
+}
+#inputSize, #inputMoves {
+    max-width: 100px;
+    margin: 0 auto;
+    text-align: center;
+}
+#winTitle {
+    text-align: center;
+}
+
+/* Красивый тумблер */
+
+.inverseSwitch {
+    position: relative; width: 140px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.inverseSwitch-checkbox {
+    display: none;
+}
+.inverseSwitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 20px;
+}
+.inverseSwitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.inverseSwitch-inner:before, .inverseSwitch-inner:after {
+    display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
+    font-size: 15px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+}
+.inverseSwitch-inner:before {
+    content: "Стандарт";
+    padding-left: 0;
+    background-color: #5cb85c; color: #333;
+}
+.inverseSwitch-inner:after {
+    content: "Инверсия";
+    padding-right: 28px;
+    background-color: #d9534f; color: #333;
+    text-align: right;
+}
+.inverseSwitch-switch {
+    display: block; width: 35px; margin: 0;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 106px;
+    border: 2px solid #999999; border-radius: 20px;
+    transition: all 0.3s ease-in 0s;
+}
+.inverseSwitch-checkbox:checked + .inverseSwitch-label .inverseSwitch-inner {
+    margin-left: 0;
+}
+.inverseSwitch-checkbox:checked + .inverseSwitch-label .inverseSwitch-switch {
+    right: 0;
+}
+/* Модальное окно */
+
+#modal {
+    display: none;
+}
+
+.overlay {
+    background: #000;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1000;
+    opacity: .5;
+}
+.visible {
+    background: #fff;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-top: -200px;
+    overflow: hidden;
+    z-index: 2000;
+    width: 300px;
+    height: 140px;
+    padding: 0;
+    margin-left: -150px;
+    text-align: center;
+}
+.content {
+    border-top: 1px solid #ccc;
+}
